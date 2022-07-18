@@ -3142,6 +3142,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1736465373498449795, guid: 1431de76f5886a94c822d0b208eee341, type: 3}
+      propertyPath: m_CollisionDetection
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1736465373498449823, guid: 1431de76f5886a94c822d0b208eee341, type: 3}
       propertyPath: m_Name
       value: Player
@@ -3166,3 +3170,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   runSpeed: 10
+  jumpSpeed: 30
