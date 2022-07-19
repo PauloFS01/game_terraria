@@ -14,6 +14,8 @@ public class Player : MonoBehaviour
     BoxCollider2D MyBoxCollider2D;
     PolygonCollider2D myPlayersfeet;
 
+    float staringGravityScale;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -21,6 +23,8 @@ public class Player : MonoBehaviour
         myAnimator = GetComponent<Animator>();
         MyBoxCollider2D = GetComponent<BoxCollider2D>();
         myPlayersfeet = GetComponent<PolygonCollider2D>();
+
+        staringGravityScale = myRigidBody2D.gravityScale;
     }
 
     // Update is called once per frame
@@ -32,15 +36,18 @@ public class Player : MonoBehaviour
     }
 
     private void Climb(){
-        if(myPlayersfeet.IsTouchingLayers(LayerMask.GetMask("Climbing"))){
+        if(MyBoxCollider2D.IsTouchingLayers(LayerMask.GetMask("Climbing"))){
             float controlThrow = CrossPlatformInputManager.GetAxis("Vertical");
             Vector2 climbingVelocity = new Vector2(myRigidBody2D.velocity.x, controlThrow * clibimgSpeed);
             myRigidBody2D.velocity = climbingVelocity;
 
             myAnimator.SetBool("Climb", true);
+
+            myRigidBody2D.gravityScale = 0f;
         }else
         {
             myAnimator.SetBool("Climb", false);
+            myRigidBody2D.gravityScale = staringGravityScale;
         }
     }
 
