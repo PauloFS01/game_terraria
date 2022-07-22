@@ -26752,7 +26752,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7350750902256654583, guid: 8ea2700188a49ee48bfaa6900c08da98, type: 3}
       propertyPath: explosionForce.x
-      value: 7000
+      value: 200
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8ea2700188a49ee48bfaa6900c08da98, type: 3}

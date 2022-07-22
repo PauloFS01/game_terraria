@@ -42,7 +42,7 @@ public class Player : MonoBehaviour
         }
     }
 
-    private void PlayerHit(){
+    public void PlayerHit(){
         myRigidBody2D.velocity = hitKick * new Vector2(-transform.localScale.x, 1f);
         myAnimator.SetTrigger("Hitting");
         isHurting = true;

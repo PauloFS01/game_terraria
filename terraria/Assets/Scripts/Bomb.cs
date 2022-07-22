@@ -21,6 +21,7 @@ public class Bomb : MonoBehaviour
 
         if(playerCollider){
             playerCollider.GetComponent<Rigidbody2D>().AddForce(explosionForce);
+            playerCollider.GetComponent<Player>().PlayerHit();
         }
     }
 
