@@ -36,9 +36,17 @@ public class Player : MonoBehaviour
         Run();
         Jump();
         Climb();
+        PlayerAttack();
         if(MyBoxCollider2D.IsTouchingLayers(LayerMask.GetMask("Enemy"))){
             PlayerHit();
         }
+        }
+    }
+
+    private void PlayerAttack(){
+        bool isAttaking = CrossPlatformInputManager.GetButtonDown("Fire1");
+        if(isAttaking){
+            myAnimator.SetTrigger("Attacking");
         }
     }
 
