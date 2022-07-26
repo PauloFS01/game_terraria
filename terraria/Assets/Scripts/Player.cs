@@ -14,7 +14,7 @@ public class Player : MonoBehaviour
 
     Rigidbody2D myRigidBody2D;
     Animator myAnimator;
-    BoxCollider2D MyBoxCollider2D;
+    BoxCollider2D myBoxCollider2D;
     PolygonCollider2D myPlayersfeet;
 
     float staringGravityScale;
@@ -25,7 +25,7 @@ public class Player : MonoBehaviour
     {
         myRigidBody2D = GetComponent<Rigidbody2D>();
         myAnimator = GetComponent<Animator>();
-        MyBoxCollider2D = GetComponent<BoxCollider2D>();
+        myBoxCollider2D = GetComponent<BoxCollider2D>();
         myPlayersfeet = GetComponent<PolygonCollider2D>();
 
         staringGravityScale = myRigidBody2D.gravityScale;
@@ -35,14 +35,25 @@ public class Player : MonoBehaviour
     void Update()
     {
         if(!isHurting){
-        Run();
-        Jump();
-        Climb();
-        Attack();
-        if(MyBoxCollider2D.IsTouchingLayers(LayerMask.GetMask("Enemy"))){
-            PlayerHit();
+            Run();
+            Jump();
+            Climb();
+            Attack();
+            if(myBoxCollider2D.IsTouchingLayers(LayerMask.GetMask("Enemy"))){
+                PlayerHit();
+            }
+
+            ExitLevel();
         }
+    }
+
+    private void ExitLevel(){
+
+        if (!myBoxCollider2D.IsTouchingLayers(LayerMask.GetMask("Interactable"))) {return;}
+        if(CrossPlatformInputManager.GetButtonDown("Vertical")){
+            FindObjectOfType<ExitDoor>().StartLoadingNextLevel();
         }
+
     }
 
     private void Attack(){
@@ -73,7 +84,7 @@ public class Player : MonoBehaviour
     }
 
     private void Climb(){
-        if(MyBoxCollider2D.IsTouchingLayers(LayerMask.GetMask("Climbing"))){
+        if(myBoxCollider2D.IsTouchingLayers(LayerMask.GetMask("Climbing"))){
             float controlThrow = CrossPlatformInputManager.GetAxis("Vertical");
             Vector2 climbingVelocity = new Vector2(myRigidBody2D.velocity.x, controlThrow * clibimgSpeed);
             myRigidBody2D.velocity = climbingVelocity;
