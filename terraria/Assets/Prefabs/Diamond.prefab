@@ -119,6 +119,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 979f517ead9ff3d4c95ee48f65225035, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  diamondPickupSFX: {fileID: 8300000, guid: b07694c1a2b3877449393ccd6ce2e5a4, type: 3}
 --- !u!61 &1062192410005553534
 BoxCollider2D:
   m_ObjectHideFlags: 0
