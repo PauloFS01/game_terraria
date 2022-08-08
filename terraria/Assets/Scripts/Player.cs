@@ -29,6 +29,8 @@ public class Player : MonoBehaviour
         myPlayersfeet = GetComponent<PolygonCollider2D>();
 
         staringGravityScale = myRigidBody2D.gravityScale;
+
+        myAnimator.SetTrigger("Appearing");
     }
 
     // Update is called once per frame
@@ -51,9 +53,18 @@ public class Player : MonoBehaviour
 
         if (!myBoxCollider2D.IsTouchingLayers(LayerMask.GetMask("Interactable"))) {return;}
         if(CrossPlatformInputManager.GetButtonDown("Vertical")){
-            FindObjectOfType<ExitDoor>().StartLoadingNextLevel();
+            myAnimator.SetTrigger("Dissapearing");
         }
 
+    }
+
+    public void LoadNextLevel(){
+        FindObjectOfType<ExitDoor>().StartLoadingNextLevel();
+        TurnOffRenderer();
+    }
+
+    public void TurnOffRenderer(){
+        GetComponent<SpriteRenderer>().enabled = false;
     }
 
     private void Attack(){
@@ -133,6 +144,7 @@ public class Player : MonoBehaviour
             transform.localScale = new Vector2(Mathf.Sign(myRigidBody2D.velocity.x), 1f);
         }
     }
+
     private void OnDrawGizmosSelected() {
         Gizmos.DrawWireSphere(hurtBox.position, attackRadius);
     }    
