@@ -18056,6 +18056,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 4383202621813372360, guid: a20c09f3505f5a845846fa31319b4509, type: 3}
+      propertyPath: dyingSFX
+      value: 
+      objectReference: {fileID: 8300000, guid: e9d89aa2588ecf045b3d6ba7a2fe1f36, type: 3}
     - target: {fileID: 4383202621813372363, guid: a20c09f3505f5a845846fa31319b4509, type: 3}
       propertyPath: m_RootOrder
       value: 3
