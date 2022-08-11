@@ -7,6 +7,8 @@ public class ExitDoor : MonoBehaviour
 {
     [SerializeField] float secondsToLoad = 2f;
 
+    [SerializeField] AudioClip openingDoorSFX;
+
     // Start is called before the first frame update
     private void OnTriggerEnter2D(Collider2D collision) {
         GetComponent<Animator>().SetTrigger("Open");
@@ -23,5 +25,9 @@ public class ExitDoor : MonoBehaviour
 
         var currentSceneIndex = SceneManager.GetActiveScene().buildIndex;
         SceneManager.LoadScene(currentSceneIndex + 1);
+    }
+
+    void PlayOpeningDoorSFX(){
+        AudioSource.PlayClipAtPoint(openingDoorSFX,Camera.main.transform.position);
     }
 }

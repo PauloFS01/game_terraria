@@ -27985,5 +27985,9 @@ PrefabInstance:
       propertyPath: m_Name
       value: Exit Door
       objectReference: {fileID: 0}
+    - target: {fileID: 8673353967909443287, guid: 4b0863624c805da408106b99992e3bcd, type: 3}
+      propertyPath: openingDoorSFX
+      value: 
+      objectReference: {fileID: 8300000, guid: 67230cbb77a881d42b6d7b4d714fdc3f, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4b0863624c805da408106b99992e3bcd, type: 3}
