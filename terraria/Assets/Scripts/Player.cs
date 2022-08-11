@@ -11,11 +11,13 @@ public class Player : MonoBehaviour
     [SerializeField] float attackRadius = 3f;
     [SerializeField] Vector2 hitKick = new Vector2(50f, 50f);
     [SerializeField] Transform hurtBox;
+    [SerializeField] AudioClip jumpingSFX, attackingSFX;
 
     Rigidbody2D myRigidBody2D;
     Animator myAnimator;
     BoxCollider2D myBoxCollider2D;
     PolygonCollider2D myPlayersfeet;
+    AudioSource myAudioSourse;
 
     float staringGravityScale;
     bool isHurting = false;
@@ -27,6 +29,7 @@ public class Player : MonoBehaviour
         myAnimator = GetComponent<Animator>();
         myBoxCollider2D = GetComponent<BoxCollider2D>();
         myPlayersfeet = GetComponent<PolygonCollider2D>();
+        myAudioSourse = GetComponent<AudioSource>();
 
         staringGravityScale = myRigidBody2D.gravityScale;
 
@@ -71,6 +74,7 @@ public class Player : MonoBehaviour
         bool isAttaking = CrossPlatformInputManager.GetButtonDown("Fire1");
         if(isAttaking){
             myAnimator.SetTrigger("Attacking");
+            myAudioSourse.PlayOneShot(attackingSFX);
 
             Collider2D[] enemiesHit = Physics2D.OverlapCircleAll(hurtBox.position, attackRadius, LayerMask.GetMask("Enemy"));
 
@@ -118,6 +122,8 @@ public class Player : MonoBehaviour
         if(isJumping){
             Vector2 jumpVelocity = new Vector2(myRigidBody2D.velocity.x, jumpSpeed);
             myRigidBody2D.velocity = jumpVelocity;
+
+            myAudioSourse.PlayOneShot(jumpingSFX);
         }
     }
 
