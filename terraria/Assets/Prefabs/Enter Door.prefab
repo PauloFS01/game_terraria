@@ -99,6 +99,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   openingDoorSFX: {fileID: 8300000, guid: 67230cbb77a881d42b6d7b4d714fdc3f, type: 3}
+  closingDoorSFX: {fileID: 8300000, guid: 3ff8abdb4853fe740bd80821b89a411b, type: 3}
 --- !u!95 &7870461574403223003
 Animator:
   serializedVersion: 4

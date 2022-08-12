@@ -7,7 +7,7 @@ public class ExitDoor : MonoBehaviour
 {
     [SerializeField] float secondsToLoad = 2f;
 
-    [SerializeField] AudioClip openingDoorSFX;
+    [SerializeField] AudioClip openingDoorSFX, closingDoorSFX;
 
     // Start is called before the first frame update
     private void OnTriggerEnter2D(Collider2D collision) {
@@ -16,7 +16,7 @@ public class ExitDoor : MonoBehaviour
 
     public void StartLoadingNextLevel(){
         GetComponent<Animator>().SetTrigger("Close");
-
+        AudioSource.PlayClipAtPoint(closingDoorSFX,Camera.main.transform.position);
         StartCoroutine(LoadingNextLevel());
     }
 
