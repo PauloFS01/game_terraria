@@ -9,6 +9,8 @@ public class GameSession : MonoBehaviour
     [SerializeField] int playerLives = 3, score = 0;
 
     [SerializeField] Text scoreText, livesText;
+
+    [SerializeField] Image[] hearts;
     
     private void Awake() {
         int numGameSessions = FindObjectsOfType<GameSession>().Length;
@@ -40,6 +42,9 @@ public class GameSession : MonoBehaviour
 
     public void AddToLive(int value){
         playerLives += value;
+        if(playerLives >= 3){
+            playerLives = 3;
+        }
         livesText.text = playerLives.ToString();
     }    
 
