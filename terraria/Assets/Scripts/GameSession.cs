@@ -45,15 +45,31 @@ public class GameSession : MonoBehaviour
         if(playerLives >= 3){
             playerLives = 3;
         }
+
+        UpdateLives();
+
         livesText.text = playerLives.ToString();
     }    
 
     private void TakeLife(){
         playerLives --;
+        UpdateLives();
         livesText.text = playerLives.ToString();
     }
 
     private void ResetGame(){
         SceneManager.LoadScene(0);
+    }
+
+     void UpdateLives(){
+
+        for(int i = 0; i < hearts.Length; i++){
+            if (i < playerLives){
+                hearts[i].enabled = true;
+            }else {
+                hearts[i].enabled = false;
+            }
+        }
+
     }
 }
