@@ -130,6 +130,7 @@ public class Player : MonoBehaviour
     }
 
     private void Run(){
+    // if you are seeing jerkiness in character moves, set option Interpolate in rigidboy2d 
         float controlThrow = CrossPlatformInputManager.GetAxis("Horizontal");
          
         Vector2 playerVelocity = new Vector2(controlThrow * runSpeed, myRigidBody2D.velocity.y);
